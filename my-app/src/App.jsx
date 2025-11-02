@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import LoadingSpinner from './components/LoadingSpinner';
 import CryptoTable from './components/CryptoTable';
+import FilterForm from './components/FilterForm';
 
 const API_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false';
 
@@ -11,7 +12,7 @@ function App() {
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 });
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 1000000 });
   const [lastUpdated, setLastUpdated] = useState(null);
   const [selectedCoinId, setSelectedCoinId] = useState(null);
   
@@ -34,7 +35,12 @@ function App() {
     fetchCoins(); 
   }, [fetchCoins]);
   
-  const filteredCoins = coins; 
+  const filteredCoins = useMemo(() => {
+    return coins.filter(coin => 
+      coin.current_price >= priceRange.min && coin.current_price <= priceRange.max
+    );
+  }, [coins, priceRange]);
+
   const handleDetailClick = (coinId) => {};
   if (error) {
     return <div className="container" style={{ color: 'red', textAlign: 'center' }}>{error}</div>;
@@ -45,14 +51,14 @@ function App() {
       <Header />
       <div className="dashboard-layout">
         <div style={{ width: '300px' }}>
-          <h3>Filter Area</h3>
+          <FilterForm setPriceRange={setPriceRange} /> 
         </div>
         <div className="main-content">
         <h2>Market Overview</h2>
         {loading ? (
             <LoadingSpinner />
         ) : (
-            <CryptoTable coins={coins} handleDetailClick={handleDetailClick} />
+            <CryptoTable coins={filteredCoins} handleDetailClick={handleDetailClick} />
         )}
     </div>
       </div>
