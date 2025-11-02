@@ -5,6 +5,7 @@ import Header from './components/Header';
 import LoadingSpinner from './components/LoadingSpinner';
 import CryptoTable from './components/CryptoTable';
 import FilterForm from './components/FilterForm';
+import RefreshButton from './components/RefreshButton';
 
 const API_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false';
 
@@ -54,13 +55,20 @@ function App() {
           <FilterForm setPriceRange={setPriceRange} /> 
         </div>
         <div className="main-content">
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '15px' }}>
+            <RefreshButton 
+              onClick={fetchCoins} 
+              loading={loading} 
+              lastUpdated={lastUpdated} 
+            />
+          </div>
         <h2>Market Overview</h2>
         {loading ? (
             <LoadingSpinner />
         ) : (
             <CryptoTable coins={filteredCoins} handleDetailClick={handleDetailClick} />
         )}
-    </div>
+        </div>
       </div>
     </div>
     
