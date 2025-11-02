@@ -1,16 +1,51 @@
-# React + Vite
+# uts-pemweb-123140032 - Cryptocurrency Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 👨‍💻 Informasi Mahasiswa
+* **Nama:** Arrauf Setiawan Muhammad Jabar
+* **NIM:** 123140032
+* **Studi Kasus:** Digit Akhir 2 - Cryptocurrency Tracker (CoinGecko API)
 
-Currently, two official plugins are available:
+## ✨ Deskripsi Proyek
+Aplikasi pelacak harga cryptocurrency yang dibangun menggunakan **ReactJS** dan **Axios**. Proyek ini menampilkan Dashboard dengan tabel data koin, filter range harga, dan halaman terpisah untuk **Kalkulator Portfolio Aset** yang disimpan menggunakan **localStorage**. Aplikasi ini memenuhi kriteria responsive design dan integrasi API yang dinamis.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Link Pengumpulan
+* **GitHub Repository:** https://github.com/arrauf02/uts-pemweb-123140032
+* **URL Live App (Vercel):** [MASUKKAN LINK DEPLOYMENT VERCEL ANDA DI SINI]
 
-## React Compiler
+## 🚀 Fitur Utama yang Diimplementasikan
+1.  **Form Filter Harga:** Memfilter koin berdasarkan range harga minimum dan maksimum 
+2.  **Tabel Data Dinamis:** Menampilkan 50 koin teratas dengan *data binding* 
+3.  **Detail Koin & Chart:** Modal detail yang menampilkan data koin spesifik dan **grafik harga 7 hari** (*live data fetching* menggunakan endpoint historis CoinGecko).
+4.  **Portfolio Calculator:** Halaman terpisah untuk manajemen aset (Tambah, Akumulasi, Hapus) menggunakan **localStorage** 
+5.  **Responsive Design:** Tampilan adaptif menggunakan Media Queries dan Flexbox 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Cara Instalasi dan Menjalankan
+**⚠️ PRASYARAT WAJIB:** Pastikan Anda sudah menginstal **Node.js** (rekomendasi versi LTS) dan **npm (Node Package Manager)** di sistem Anda.
+1.  Clone repository ini:
+    ```bash
+    git clone https://github.com/arrauf02/uts-pemweb-123140032.git
+    cd uts-pemweb-123140032
+    ```
 
-## Expanding the ESLint configuration
+2.  Instal dependencies (Axios, Chart.js, react-chartjs-2.):
+    ```bash
+    npm install Axios
+    npm install Chart.js
+    npm install react-chartjs-2
+    ```
+3.  Jalankan aplikasi:
+    ```bash
+    npm run dev
+    ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📸 Screenshot Aplikasi
+1.  **Dashboard Utama (Market Overview)**
+    
+    Dashboard.png
+
+2.  **Halaman Asset Portfolio**
+    
+    asset.png
+
+3.  **Tampilan Saat Refresh halaman**
+
