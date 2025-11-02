@@ -10,7 +10,7 @@ Aplikasi pelacak harga cryptocurrency yang dibangun menggunakan **ReactJS** dan 
 
 ## 🔗 Link Pengumpulan
 * **GitHub Repository:** https://github.com/arrauf02/uts-pemweb-123140032
-* **URL Live App (Vercel):** [MASUKKAN LINK DEPLOYMENT VERCEL ANDA DI SINI]
+* **URL Live App (Vercel):** https://uts-pemweb-123140032-xf1q.vercel.app/
 
 ## 🚀 Fitur Utama yang Diimplementasikan
 1.  **Form Filter Harga:** Memfilter koin berdasarkan range harga minimum dan maksimum 
@@ -39,13 +39,17 @@ Aplikasi pelacak harga cryptocurrency yang dibangun menggunakan **ReactJS** dan 
     ```
 
 ## 📸 Screenshot Aplikasi
-1.  **Dashboard Utama (Market Overview)**
-    
-    Dashboard.png
+### 1. Dashboard Utama (Market Overview)
+<img src="public/Dashboard.png" width="600" alt="Tampilan utama Dashboard" />
 
-2.  **Halaman Asset Portfolio**
-    
-    asset.png
+### 2. Form Filter yang Aktif
+<img src="public/filter.png" width="600" alt="Tampilan Form Filter Harga saat digunakan" />
 
-3.  **Tampilan Saat Refresh halaman**
+### 3. Halaman Asset Portfolio
+<img src="public/asset.png" width="600" alt="Tampilan halaman manajemen aset" />
 
+### 4. Modal Detail Koin & Chart
+<img src="public/detail_coin.png" width="600" alt="Tampilan modal detail koin dengan grafik" />
+
+### 5. Tampilan Saat Refresh/Loading
+<img src="public/Refresh.png" width="600" alt="Kondisi loading state saat refresh" />
