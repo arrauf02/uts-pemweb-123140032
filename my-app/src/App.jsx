@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react'; 
+// src/App.jsx
+import React, { useState, useEffect, useCallback, useMemo } from 'react'; 
 import axios from 'axios';
 import './App.css';
 import Header from './components/Header';
@@ -8,16 +9,38 @@ const API_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&
 
 function App() {
   const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
   const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 });
   const [lastUpdated, setLastUpdated] = useState(null);
   const [selectedCoinId, setSelectedCoinId] = useState(null);
+  
+  const fetchCoins = useCallback(async () => {
+    setLoading(true); 
+    setError(null);
+    try {
+      const response = await axios.get(API_URL);
+      setCoins(response.data); 
+      setLastUpdated(new Date());
+    } catch (err) {
+      console.error("Gagal mengambil data:", err);
+      setError("Gagal memuat data cryptocurrency. Coba periksa koneksi internet Anda."); 
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-  const fetchCoins = useCallback(async () => {}, []);
+  useEffect(() => {
+    fetchCoins(); 
+  }, [fetchCoins]);
+  
   const filteredCoins = [];
   const handleDetailClick = () => {};
 
+  if (error) {
+    return <div className="container" style={{ color: 'red', textAlign: 'center' }}>{error}</div>;
+  }
+  
   return (
     <div className="container">
       <Header />
@@ -27,7 +50,7 @@ function App() {
         </div>
         <div className="main-content">
           <h2>Market Overview</h2>
-          {loading ? <LoadingSpinner /> : <p>Aplikasi siap memuat data.</p>}
+          {loading ? <LoadingSpinner /> : <p>Data berhasil dimuat. Total {coins.length} koin.</p>}
         </div>
       </div>
     </div>
