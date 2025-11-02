@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React, { useState, useEffect, useCallback } from 'react'; 
+import axios from 'axios';
+import './App.css';
+import Header from './components/Header';
+import LoadingSpinner from './components/LoadingSpinner';
+
+const API_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [coins, setCoins] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 });
+  const [lastUpdated, setLastUpdated] = useState(null);
+  const [selectedCoinId, setSelectedCoinId] = useState(null);
+
+  // Fungsi fetchCoins dan filteredCoins masih kosong di commit ini
+  const fetchCoins = useCallback(async () => {}, []);
+  const filteredCoins = [];
+  const handleDetailClick = () => {};
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <Header />
+      <div className="dashboard-layout">
+        <div style={{ width: '300px' }}>
+          <h3>Filter Area</h3>
+        </div>
+        <div className="main-content">
+          <h2>Market Overview</h2>
+          {loading ? <LoadingSpinner /> : <p>Aplikasi siap memuat data.</p>}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
