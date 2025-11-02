@@ -1,9 +1,9 @@
-// src/App.jsx
 import React, { useState, useEffect, useCallback, useMemo } from 'react'; 
 import axios from 'axios';
 import './App.css';
 import Header from './components/Header';
 import LoadingSpinner from './components/LoadingSpinner';
+import CryptoTable from './components/CryptoTable';
 
 const API_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false';
 
@@ -34,9 +34,8 @@ function App() {
     fetchCoins(); 
   }, [fetchCoins]);
   
-  const filteredCoins = [];
-  const handleDetailClick = () => {};
-
+  const filteredCoins = coins; 
+  const handleDetailClick = (coinId) => {};
   if (error) {
     return <div className="container" style={{ color: 'red', textAlign: 'center' }}>{error}</div>;
   }
@@ -49,11 +48,16 @@ function App() {
           <h3>Filter Area</h3>
         </div>
         <div className="main-content">
-          <h2>Market Overview</h2>
-          {loading ? <LoadingSpinner /> : <p>Data berhasil dimuat. Total {coins.length} koin.</p>}
-        </div>
+        <h2>Market Overview</h2>
+        {loading ? (
+            <LoadingSpinner />
+        ) : (
+            <CryptoTable coins={coins} handleDetailClick={handleDetailClick} />
+        )}
+    </div>
       </div>
     </div>
+    
   );
 }
 

@@ -11,13 +11,13 @@ const Header = () => {
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
         <img 
-          src="/bitcoin.png" 
+          src="/bitcoin.jpeg" 
           alt="Bitcoin Logo" 
           style={{ height: '40px' }} 
         />
         <h1>Cryptocurrency Tracker</h1>
         <img 
-          src="/bitcoin.png" 
+          src="/bitcoin.jpeg" 
           alt="Bitcoin Logo" 
           style={{ height: '40px' }} 
         />
