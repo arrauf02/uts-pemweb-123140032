@@ -1,22 +1,20 @@
-// src/components/DashboardPage.jsx
 import React from 'react';
 import FilterForm from './FilterForm'; 
 import CryptoTable from './CryptoTable'; 
 import RefreshButton from './RefreshButton'; 
+import LoadingSpinner from './LoadingSpinner';
 
-const DashboardPage = ({ coins, loading, lastUpdated, setPriceRange, filteredCoins, handleDetailClick, fetchCoins }) => {
+const DashboardPage = ({ loading, lastUpdated, setPriceRange, filteredCoins, handleDetailClick, fetchCoins, handleRefresh }) => {
     return (
         <div className="dashboard-layout">
-            {/* Area Sidebar/Filter */}
             <div style={{ width: '300px' }}>
                 <FilterForm setPriceRange={setPriceRange} /> 
             </div>
             
-            {/* Area Konten Utama */}
             <div className="main-content">
                 <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '15px' }}>
                     <RefreshButton 
-                        onClick={fetchCoins} 
+                        onClick={handleRefresh} 
                         loading={loading} 
                         lastUpdated={lastUpdated} 
                     />
@@ -24,7 +22,7 @@ const DashboardPage = ({ coins, loading, lastUpdated, setPriceRange, filteredCoi
                 
                 <h2>Market Overview</h2>
                 {loading ? (
-                    <div style={{textAlign: 'center', padding: '50px'}}><p>Loading data...</p></div>
+                    <LoadingSpinner />
                 ) : (
                     <CryptoTable coins={filteredCoins} handleDetailClick={handleDetailClick} />
                 )}

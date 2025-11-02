@@ -1,7 +1,5 @@
-// src/components/AssetPage.jsx
 import React, { useState, useMemo } from 'react';
 
-// Fungsi Helper (tanpa utils.js)
 const formatCurrency = (amount) => {
   return `$${parseFloat(amount).toLocaleString(undefined, { 
     minimumFractionDigits: 2, 
@@ -9,8 +7,8 @@ const formatCurrency = (amount) => {
   })}`;
 };
 
-const AssetPage = ({ coins }) => {
-  const [holdings, setHoldings] = useState({}); // { coinId: amount }
+const AssetPage = ({ coins }) => { 
+  const [holdings, setHoldings] = useState({}); 
 
   const priceMap = useMemo(() => {
     return coins.reduce((acc, coin) => {
