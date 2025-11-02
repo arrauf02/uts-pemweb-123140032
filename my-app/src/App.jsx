@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'; 
 import axios from 'axios';
-import './App.css'; 
+import './App.css';
+
 import Header from './components/Header';
 import LoadingSpinner from './components/LoadingSpinner';
 import CryptoTable from './components/CryptoTable';
@@ -41,36 +42,31 @@ function App() {
     return () => clearInterval(intervalId);
   }, [fetchCoins]);
 
-
   const filteredCoins = useMemo(() => {
     return coins.filter(coin => 
       coin.current_price >= priceRange.min && coin.current_price <= priceRange.max
     );
   }, [coins, priceRange]);
   
- 
   const handleDetailClick = (coinId) => {
-    setSelectedCoinId(coinId); 
+    setSelectedCoinId(coinId);
   };
   const handleCloseDetail = () => {
-    setSelectedCoinId(null); 
+    setSelectedCoinId(null);
   };
-  const handleRefresh = () => fetchCoins(); 
-
+  const handleRefresh = () => fetchCoins();
 
   const renderPage = () => {
     if (error) {
         return <div style={{ color: 'red', textAlign: 'center', padding: '40px' }}>{error}</div>;
     }
     
-
     if (currentPage === 'dashboard') {
       return (
         <div className="dashboard-layout">
           <div style={{ width: '300px' }}>
               <FilterForm setPriceRange={setPriceRange} />
           </div>
-
           <div className="main-content">
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '15px' }}>
                 <RefreshButton 
