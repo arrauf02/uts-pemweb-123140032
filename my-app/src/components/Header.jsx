@@ -1,4 +1,4 @@
-// src/components/Header.jsx
+
 import React from 'react';
 
 const Header = () => {
@@ -11,7 +11,6 @@ const Header = () => {
       borderRadius: '8px' 
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '15px' }}>
-        {/* Menggunakan tag img dan path relatif dari folder public/ */}
         <img 
           src="/bitcoin.png" 
           alt="Bitcoin Logo" 

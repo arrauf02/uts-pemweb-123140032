@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState, useEffect, useCallback } from 'react'; 
 import axios from 'axios';
 import './App.css';
@@ -15,7 +14,6 @@ function App() {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [selectedCoinId, setSelectedCoinId] = useState(null);
 
-  // Fungsi fetchCoins dan filteredCoins masih kosong di commit ini
   const fetchCoins = useCallback(async () => {}, []);
   const filteredCoins = [];
   const handleDetailClick = () => {};
